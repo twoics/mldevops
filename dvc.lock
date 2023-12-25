@@ -1,0 +1,29 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python prepare.py
+    deps:
+    - path: data/
+      hash: md5
+      md5: 840fdb9a23c98313dde45246036c291f.dir
+      size: 452697142
+      nfiles: 5000
+    outs:
+    - path: prepared/
+      hash: md5
+      md5: 4caba01c93a5b6d2a79aa09247cedbec.dir
+      size: 58336320
+      nfiles: 6
+  train:
+    cmd: python train.py
+    deps:
+    - path: prepared/
+      hash: md5
+      md5: 4caba01c93a5b6d2a79aa09247cedbec.dir
+      size: 58336320
+      nfiles: 6
+    outs:
+    - path: ./summary.json
+      hash: md5
+      md5: e6d386ffdd835ae98d4b00003ea81533
+      size: 90
